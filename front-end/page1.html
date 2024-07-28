@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locate to Educate</title>
+<style>
+    body {
+        color: white;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://assets.thehansindia.com/h-upload/2023/11/06/1396212-boarding-schools.webp') no-repeat center center fixed; 
+        background-size: cover;
+    }
+    .container {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
+    }
+    .left-section {
+        width: 50%;
+        position: relative;
+    }
+    .left-section img {
+        width: 100%;
+        height: auto;
+    }
+    .text-overlay {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        transform: translate(-10%, -20%);
+        /* color: #000; */
+    }
+    .text-overlay h1 {
+        font-size: 4em;
+        margin: 0;
+    }
+    .text-overlay h1:nth-child(2) {
+        color: #ff0099;
+    }
+    .button-container {
+        position: absolute;
+        right: 10%;
+        bottom: 20%
+    }
+    .button-container button {
+        font-weight: bold;
+        font-size: 20px;
+        padding: 20px 40px;
+        background-color: #c5b057;
+        color: #fff;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .right-section {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .right-section img {
+        width: 80%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .nav-links {
+        position: absolute;
+        top: 20px;
+        right: 50px;
+    }
+    .nav-links a {
+        margin-left: 20px;
+        text-decoration: none;
+        /* color: #000; */
+        color: white;
+        font-size: 1em;
+        position: relative;
+    }
+    .nav-links a:hover .tooltip {
+        display: block;
+    }
+    .tooltip {
+        display: none;
+        position: absolute;
+        top: 25px;
+        left: -10px;
+        background-color: #fff;
+        color: #000;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8em;
+        white-space: nowrap;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
+    }
+    .tooltip::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #fff transparent;
+    }
+    .tooltip::after {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent #ccc transparent;
+    }
+</style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="#">about us
+            <span class="tooltip">This web application is to help Govt of India to recognize and record dropped out students and students who never visited school</span>
+        </a>
+        <a href="#">child-helpline
+            <span class="tooltip">1098</span>
+        </a>
+        <a href="#">contact us
+            <span class="tooltip">devsuhas@gmail.com</span>
+        </a>
+    </div>
+    <div class="container">
+        <div class="left-section">
+            <div class="text-overlay">
+                <h1>LOCATE</h1>
+                <h1>TO</h1>
+                <h1>EDUCATE</h1>
+            </div>
+        </div>
+        <div class="right-section">
+            <!-- Optionally add any other content or image here -->
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='index.html'">press to enter details -></button>
+        </div>
+    </div>
+</body>
+</html>

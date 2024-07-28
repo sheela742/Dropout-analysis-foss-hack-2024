@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to right, #dfe9f3 0%, #ffffff 100%);
+    }
+    .certificate {
+        width: 70%;
+        border: 5px solid #f7c6c7;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        background-color: #fff;
+    }
+    .certificate h1 {
+        font-size: 2.5em;
+        color: #ff7f50;
+    }
+    .certificate h2 {
+        font-size: 1.5em;
+        color: #333;
+        margin: 20px 0;
+    }
+    .certificate p {
+        font-size: 1.2em;
+        color: #555;
+        line-height: 1.6;
+    }
+    .certificate .highlight {
+        font-size: 1.5em;
+        color: #ff7f50;
+        font-weight: bold;
+    }
+    .certificate .note {
+        font-size: 0.8em;
+        color: #888;
+        margin-top: 30px;
+    }
+    .certificate img {
+        width: 100px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="certificate">
+        <h1>Appreciation Letter</h1>
+        <img src="https://lh6.googleusercontent.com/proxy/nYK-2gGKsSbVnfA0CMAqUEtTtIP7UK0p7PSassXPWYs2O6j7cMAXtto9ajs8HpiqAqf5YmjQ9u58yKyBcE7-aqnxXvVtwbj4fZDvc6Q7JDCh6ugamF3wBS54fgl3aAw" alt="Namaste">
+        <h2>Dear Mr./Ms. <span id="locator-name"></span>,</h2>
+        <p>
+            <span class="highlight">We</span>, appreciate your efforts in locating the student who has dropped the schooling. The Government of India appreciates you for your valuable contribution and for being a responsible citizen. The mentioned student will be soon tracked and will be rolled back to schooling as per RTE.
+        </p>
+        <p class="note">Note: We may contact you if necessary.</p>
+    </div>
+
+    <script>
+        // Retrieve the locator's name from the URL parameters and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const locatorName = urlParams.get('name');
+        document.getElementById('locator-name').textContent = locatorName;
+    </script>
+</body>
+</html>

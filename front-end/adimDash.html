@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zip Code Search - Locate to Educate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #dfe9f3 0%, #ffffff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            width: 50%;
+        }
+        .search-bar {
+            width: 100%;
+            display: flex;
+            border-radius: 25px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .search-bar input {
+            border: none;
+            padding: 10px 20px;
+            flex: 1;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+        .search-bar button {
+            border: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+        }
+        .results {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .result-item {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .result-item h2 {
+            margin: 0 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Related Zip Codes</h1>
+        <div class="search-bar">
+            <input type="text" id="zip-code-input" placeholder="Enter Zip Code">
+            <button onclick="searchZipCode()">Search</button>
+        </div>
+        <div class="results" id="results">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+    <script>
+        async function searchZipCode() {
+            const zipCode = document.getElementById('zip-code-input').value;
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (zipCode.trim() === '') {
+                resultsContainer.innerHTML = '<p>Please enter a zip code.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/admin/getStudentData?zipcode=${zipCode}`);
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                
+                const data = await response.json();
+                console.log(data);
+                
+                if (data.length > 0) {
+                    data.forEach((student, index) => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'result-item';
+                        resultItem.innerHTML = `
+                            <h2>Student ${index + 1}</h2>
+                            <p><strong>Name:</strong> ${student.studentName}</p>
+                            <p><strong>Father's Name:</strong> ${student.fathersName}</p>
+                            <p><strong>Current Age:</strong> ${student.currentAge}</p>
+                            <p><strong>Never Visited School:</strong> ${student.neverVisitedSchool}</p>
+                            <p><strong>Reasons for Drop Out:</strong> ${student.reasonsForDropOut}</p>
+                            <p><strong>Address:</strong> ${student.studentAddress}</p>
+                            <p><strong>Zip Code:</strong> ${student.zipcode}</p>
+                            <p><strong>Dropped at Age:</strong> ${student.droppedAtAge}</p>
+                        `;
+                        resultsContainer.appendChild(resultItem);
+                    });
+
+                    const resultCount = document.createElement('p');
+                    resultCount.textContent = `${data.length} result(s) found.`;
+                    resultsContainer.appendChild(resultCount);
+                } else {
+                    resultsContainer.innerHTML = '<p>No results found.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching results:', error);
+                resultsContainer.innerHTML = '<p>Error fetching results. Please try again later.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

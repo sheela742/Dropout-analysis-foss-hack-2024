@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Locate to Educate</title>
+    <style>
+        body {
+            font-family: 'YourFontFamily'; /* Replace with the actual font family from the index page */
+            background-image: url('https://cache.careers360.mobi/media/article_images/2023/1/19/feature-image-students_3.jpg'); /* Replace with the actual background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #585959; /* Replace with the actual font color from the index page */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .tab button {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .tab button.active {
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <div class="tab">
+            <button class="tablinks active" onclick="openForm(event, 'Login')">Login</button>
+            <button class="tablinks" onclick="openForm(event, 'Signup')">Signup</button>
+        </div>
+
+        <div id="Login" class="form-container active">
+            <form onsubmit="return handleSubmit('login')">
+                <div class="input-group">
+                    <label for="login-email">Local admin email:</label>
+                    <input type="email" id="login-email" name="login-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="Signup" class="form-container">
+            <form onsubmit="return handleSubmit('signup')">
+                <div class="input-group">
+                    <label for="signup-email">Local admin email:</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                </div>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openForm(evt, formName) {
+            var i, formContainer, tablinks;
+            formContainer = document.getElementsByClassName("form-container");
+            for (i = 0; i < formContainer.length; i++) {
+                formContainer[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(formName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function handleSubmit(formType) {
+            // Handle the form submission logic here
+            if (formType === 'login') {
+                // Perform login actions
+                // After successful login, redirect to the next page
+                window.location.href = './adimDash.html'; // Replace with the actual URL of the next page
+            } else if (formType === 'signup') {
+                // Perform signup actions
+                // After successful signup, redirect to the next page
+                window.location.href = './adimDash.html'; // Replace with the actual URL of the next page
+            }
+            return false; // Prevent the default form submission
+        }
+    </script>
+</body>
+</html>
